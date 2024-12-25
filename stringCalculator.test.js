@@ -8,4 +8,8 @@ describe("string calculator", () => {
   it("should return the first number if string length is one", () => {
     expect(add("1")).toBe(1)
   })
+
+  it("should return sum of first two numbers if string length is two", () => {
+    expect(add("1, 5")).toBe(6)
+  })
 })
