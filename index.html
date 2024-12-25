@@ -15,7 +15,7 @@
       <label for="nums"> Enter string</label>
       <input type="text" name="nums" id="nums" placeholder="Enter string" />
       <label>Result</label><span id="result">0</span>
-      <span id="error">Error message goes here</span>
+      <span id="error"></span>
       <button id="handleCalculation">Calculate</button>
     </div>
     <script type="module">
@@ -26,9 +26,36 @@
       let error = document.querySelector("#error")
       let calculateButton = document.querySelector("#handleCalculation")
 
+      const hideErrorMsg = () => {
+        setTimeout(() => {
+          error.style.display = "none" // Hide error after 5 seconds
+        }, 5000)
+      }
+
       calculateButton.addEventListener("click", () => {
-        const numString = numInput.value
-        console.log("numString: ", numString)
+        const numString = numInput.value.trim()
+        error.innerHTML = ""
+        if (!numString) {
+          // Check if the input is empty
+          error.style.display = "block"
+          error.innerHTML = "Input cannot be empty. Please enter a valid string."
+          hideErrorMsg()
+          return
+        }
+        try {
+          const addResult = add(numString)
+          if (addResult === 0) {
+            error.style.display = "block"
+            error.innerHTML = "The input seems to be invalid or empty for calculation."
+            hideErrorMsg()
+            return
+          }
+          result.innerHTML = addResult
+        } catch (err) {
+          error.style.display = "block"
+          if (err) error.innerHTML = err
+          hideErrorMsg()
+        }
         numInput.value = ""
       })
     </script>
