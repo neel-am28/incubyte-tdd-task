@@ -8,6 +8,9 @@ function add(numbers) {
     return numbersArray[0]
   } else if (numbersArray.length == 2) {
     return numbersArray[0] + numbersArray[1]
+  } else {
+    const sum = numbersArray.reduce((acc, item) => acc + item, 0)
+    return sum
   }
 }
 

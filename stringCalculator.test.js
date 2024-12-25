@@ -12,4 +12,8 @@ describe("string calculator", () => {
   it("should return sum of first two numbers if string length is two", () => {
     expect(add("1, 5")).toBe(6)
   })
+
+  it("should return sum of all numbers inside the string", () => {
+    expect(add("1, 2, 5")).toBe(8)
+  })
 })
