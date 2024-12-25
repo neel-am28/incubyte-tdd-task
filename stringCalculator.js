@@ -1,5 +1,5 @@
 function add(numbers) {
-  if (numbers == "") {
+  if (numbers.trim() == "") {
     return 0
   }
 }
