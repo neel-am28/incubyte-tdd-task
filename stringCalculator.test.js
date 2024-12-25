@@ -16,4 +16,8 @@ describe("string calculator", () => {
   it("should return sum of all numbers inside the string", () => {
     expect(add("1, 2, 5")).toBe(8)
   })
+
+  it("should return sum of all numbers inside the string separated by new line or a commma", () => {
+    expect(add("1\n2,3")).toBe(6)
+  })
 })
