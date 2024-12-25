@@ -33,7 +33,8 @@
       }
 
       calculateButton.addEventListener("click", () => {
-        const numString = numInput.value.trim()
+        const rawInput = numInput.value.trim()
+        const numString = rawInput.replace(/\\n/g, "\n") // Replace literal '\n' with actual newline
         error.innerHTML = ""
         result.innerHTML = "0"
         if (!numString) {
@@ -43,6 +44,7 @@
           hideErrorMsg()
           return
         }
+
         try {
           const addResult = add(numString)
 
