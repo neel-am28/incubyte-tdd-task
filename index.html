@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Incubyte - String Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>String Calculator</h1>
+    <div id="calculatorContainer">
+      <label for="nums"> Enter string</label>
+      <input type="text" name="nums" id="nums" placeholder="Enter string" />
+      <label>Result</label><span id="result">0</span>
+      <span id="error">Error message goes here</span>
+      <button id="handleCalculation">Calculate</button>
+    </div>
+    <script type="module">
+      import {add} from "./stringCalculator.js"
+
+      let numInput = document.querySelector("#nums")
+      let result = document.querySelector("#result")
+      let error = document.querySelector("#error")
+      let calculateButton = document.querySelector("#handleCalculation")
+
+      calculateButton.addEventListener("click", () => {
+        const numString = numInput.value
+        console.log("numString: ", numString)
+        numInput.value = ""
+      })
+    </script>
+  </body>
+</html>

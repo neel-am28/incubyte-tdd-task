@@ -1,4 +1,4 @@
-function add(numbers) {
+export function add(numbers) {
   if (numbers.trim() == "") {
     return 0
   }
@@ -19,5 +19,3 @@ function add(numbers) {
   }
   return numbersArray.reduce((acc, item) => acc + item, 0)
 }
-
-module.exports = {add}

@@ -1,4 +1,4 @@
-const {add} = require("./stringCalculator")
+import {add} from "./stringCalculator.js"
 
 describe("string calculator", () => {
   it("should return 0 if empty string is passed", () => {
