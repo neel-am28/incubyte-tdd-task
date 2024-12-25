@@ -35,6 +35,7 @@
       calculateButton.addEventListener("click", () => {
         const numString = numInput.value.trim()
         error.innerHTML = ""
+        result.innerHTML = "0"
         if (!numString) {
           // Check if the input is empty
           error.style.display = "block"
@@ -44,18 +45,18 @@
         }
         try {
           const addResult = add(numString)
+
           if (addResult === 0) {
-            error.style.display = "block"
-            error.innerHTML = "The input seems to be invalid or empty for calculation."
-            hideErrorMsg()
-            return
+            result.innerHTML = "0"
+          } else {
+            result.innerHTML = addResult
           }
-          result.innerHTML = addResult
         } catch (err) {
           error.style.display = "block"
-          if (err) error.innerHTML = err
+          error.innerHTML = err.message || "An error occurred during the calculation."
           hideErrorMsg()
         }
+
         numInput.value = ""
       })
     </script>
