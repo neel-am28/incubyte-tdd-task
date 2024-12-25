@@ -24,4 +24,9 @@ describe("string calculator", () => {
   it("should return sum of all numbers inside the string separated by new line and custom delimiter", () => {
     expect(add("//;\n1;2")).toBe(3)
   })
+
+  it("should return comma separated string of numbers if they are negative", () => {
+    expect(() => add("1,-2,3")).toThrowError("negative numbers not allowed -2")
+    expect(() => add("1,-2,-3")).toThrowError("negative numbers not allowed -2,-3")
+  })
 })
