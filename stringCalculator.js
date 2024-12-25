@@ -3,14 +3,19 @@ function add(numbers) {
     return 0
   }
 
-  const numbersArray = numbers.split(/[\n,]/).map((num) => Number(num))
-  if (numbersArray.length == 1) {
-    return numbersArray[0]
-  } else if (numbersArray.length == 2) {
-    return numbersArray[0] + numbersArray[1]
+  if (numbers.startsWith("//")) {
+    const delimiterString = numbers.split("\n")[0].slice(2)
+    const numbersArray = numbers
+      .split("\n")[1] // Get the numbers part
+      .split(delimiterString) // Split by custom delimiter
+      .map((num) => Number(num)) // Convert to numbers
+
+    return numbersArray.reduce((acc, item) => acc + item, 0)
   } else {
-    const sum = numbersArray.reduce((acc, item) => acc + item, 0)
-    return sum
+    // Handle case for default delimiter (comma)
+    const numbersArray = numbers.split(/[\n,]/).map((num) => Number(num))
+
+    return numbersArray.reduce((acc, item) => acc + item, 0)
   }
 }
 

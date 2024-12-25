@@ -10,14 +10,18 @@ describe("string calculator", () => {
   })
 
   it("should return sum of first two numbers if string length is two", () => {
-    expect(add("1, 5")).toBe(6)
+    expect(add("1,5")).toBe(6)
   })
 
   it("should return sum of all numbers inside the string", () => {
-    expect(add("1, 2, 5")).toBe(8)
+    expect(add("1,2,5")).toBe(8)
   })
 
   it("should return sum of all numbers inside the string separated by new line or a commma", () => {
     expect(add("1\n2,3")).toBe(6)
+  })
+
+  it("should return sum of all numbers inside the string separated by new line and custom delimiter", () => {
+    expect(add("//;\n1;2")).toBe(3)
   })
 })
