@@ -18,6 +18,7 @@ This is a simple **String Calculator** project implemented in JavaScript, accomp
 ### `add(numbers)`
 
 The `add` function is the core logic for the calculator:
+
 - **Handles Empty Input**: Returns `0` for empty strings.
 - **Custom Delimiters**: Detects custom delimiters using the prefix `//` and splits the string accordingly.
 - **Default Delimiters**: Uses commas and newlines for splitting if no custom delimiter is provided.
@@ -32,11 +33,10 @@ The `add` function is the core logic for the calculator:
   - The result is displayed, or an error message is shown if the input is invalid.
   - Error messages automatically disappears after 5 seconds.
 
----
-
 ### Unit Tests
 
 Test cases have been implemented using Jest:
+
 1. Empty string input returns `0`.
 2. Single number input returns the number itself.
 3. Multiple numbers separated by commas return their sum.
@@ -54,12 +54,10 @@ Test cases have been implemented using Jest:
 
 ## Example Inputs and Outputs
 
-| Input                | Output          | Notes                                    |
-|----------------------|-----------------|------------------------------------------|
-| `""`                | `0`            | Empty string returns `0`.               |
-| `"1,2,3"`           | `6`            | Default delimiter (comma).              |
-| `"1\n2,3"`          | `6`            | Supports newlines as separators.        |
-| `"//;\n1;2"`        | `3`            | Custom delimiter `;`.                   |
-| `"1,-2,3"`          | `0`            | Throws error for negative numbers.      |
-
----
+| Input        | Output | Notes                              |
+| ------------ | ------ | ---------------------------------- |
+| `""`         | `0`    | Empty string returns `0`.          |
+| `"1,2,3"`    | `6`    | Default delimiter (comma).         |
+| `"1\n2,3"`   | `6`    | Supports newlines as separators.   |
+| `"//;\n1;2"` | `3`    | Custom delimiter `;`.              |
+| `"1,-2,3"`   | `0`    | Throws error for negative numbers. |
