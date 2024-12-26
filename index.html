@@ -19,47 +19,53 @@
       <button id="handleCalculation">Calculate</button>
     </div>
     <script type="module">
+      // imported external scrpit as module
       import {add} from "./stringCalculator.js"
 
-      let numInput = document.querySelector("#nums")
-      let result = document.querySelector("#result")
-      let error = document.querySelector("#error")
-      let calculateButton = document.querySelector("#handleCalculation")
+      // DOM elements
+      let numInputElem = document.querySelector("#nums")
+      let resultElem = document.querySelector("#result")
+      let errorElem = document.querySelector("#error")
+      let calculateBtnElem = document.querySelector("#handleCalculation")
 
+      // functom to hide the error msg element after 5 seconds
       const hideErrorMsg = () => {
         setTimeout(() => {
-          error.style.display = "none" // Hide error after 5 seconds
+          errorElem.style.display = "none"
         }, 5000)
       }
 
-      calculateButton.addEventListener("click", () => {
-        const rawInput = numInput.value.trim()
-        const numString = rawInput.replace(/\\n/g, "\n") // Replace literal '\n' with actual newline
-        error.innerHTML = ""
-        result.innerHTML = "0"
+      // event listener for calculate btn click
+      calculateBtnElem.addEventListener("click", () => {
+        const rawInput = numInputElem.value.trim()
+        let numString = rawInput.replace(/\\n/g, "\n") // Replace literal '\n' with actual newline
+        numString = rawInput.replace(/['"\s]/g, "") // Remove double or single quotes and spaces from the string
+        errorElem.innerHTML = ""
+        resultElem.innerHTML = "0"
         if (!numString) {
           // Check if the input is empty
-          error.style.display = "block"
-          error.innerHTML = "Input cannot be empty. Please enter a valid string."
+          errorElem.style.display = "block"
+          errorElem.innerHTML = "Input cannot be empty. Please enter a valid string."
           hideErrorMsg()
           return
         }
 
+        // try catch block to catch any exceptions thrown
         try {
           const addResult = add(numString)
 
           if (addResult === 0) {
-            result.innerHTML = "0"
+            resultElem.innerHTML = "0"
           } else {
-            result.innerHTML = addResult
+            resultElem.innerHTML = addResult
           }
         } catch (err) {
-          error.style.display = "block"
-          error.innerHTML = err.message || "An error occurred during the calculation."
+          errorElem.style.display = "block"
+          errorElem.innerHTML = err.message || "An error occurred during the calculation."
           hideErrorMsg()
         }
 
-        numInput.value = ""
+        numInputElem.value = ""
       })
     </script>
   </body>
